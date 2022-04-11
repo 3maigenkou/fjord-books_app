@@ -9,12 +9,16 @@ ja:
         memo: メモ
         picture: 写真
         title: タイトル
-        new_book: 新規書籍
-        editing_book: 書籍編集
 
-      function:
-        show: 詳細
-        edit: 編集
-        destroy: 削除
-        new_book: 新規作成
-        back: 戻る
+  function:
+    show: 詳細
+    edit: 編集
+    destroy: 削除
+    new_book: 新規作成
+    back: 戻る
+
+  books:
+    new:
+      new_book: 新規書籍
+    edit:
+      editing_book: 書籍編集
