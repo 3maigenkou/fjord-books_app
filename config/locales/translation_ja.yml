@@ -1,0 +1,24 @@
+ja:
+  activerecord:
+    models:
+      book: 書籍
+
+    attributes:
+      book:
+        author: 著者
+        memo: メモ
+        picture: 写真
+        title: タイトル
+
+  function:
+    show: 詳細
+    edit: 編集
+    destroy: 削除
+    new_book: 新規作成
+    back: 戻る
+
+  books:
+    new:
+      new_book: 新規書籍
+    edit:
+      editing_book: 書籍編集
