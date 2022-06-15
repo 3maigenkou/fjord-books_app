@@ -1,2 +1,8 @@
-<h1>FollowRelationships#followings</h1>
-<p>Find me in app/views/follow_relationships/followings.html.erb</p>
+<h1>followings</h1>
+<% if @user.followings.present? %>
+  <%= render 'user_list', users: @users %>
+<% else %>
+  <p>no date</p>
+<% end %>
+<%= paginate @users %>
+<%= link_to t('views.common.back'), @user %>
