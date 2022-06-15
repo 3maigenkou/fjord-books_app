@@ -14,7 +14,7 @@ class User < ApplicationRecord
                                   dependent: :destroy
 
   has_many :followings, through: :active_relationships, source: :followed
-  has_many :followed, through: :passive_relationship, source: :follower
+  has_many :followers, through: :passive_relationship, source: :follower
 
   def follow(user_id)
     active_relationships.create(followed_id: user_id)
