@@ -20,3 +20,6 @@ ja:
         unfollow: フォローを外す
         followings: フォロー
         followers: フォロワー
+
+  announcement:
+    no_date: ユーザーはいません。
