@@ -1,0 +1,14 @@
+<h1><%= t('views.common.title_show', name: DailyReport.model_name.human) %></h1>
+
+<p>
+  <strong><%= DailyReport.human_attribute_name(:title) %>:</strong>
+  <%= @daily_report.title %>
+</p>
+
+<p>
+  <strong><%= DailyReport.human_attribute_name(:content) %>:</strong>
+  <%= @daily_report.content %>
+</p>
+
+<%= link_to t('views.common.edit'), edit_daily_report_path(@daily_report) %> |
+<%= link_to t('views.common.back'), daily_reports_path %>
