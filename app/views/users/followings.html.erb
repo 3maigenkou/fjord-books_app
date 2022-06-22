@@ -1,0 +1,8 @@
+<h1><%= User.human_attribute_name(:followings) %></h1>
+<% if @user.followings.present? %>
+  <%= render 'user_list', users: @users %>
+<% else %>
+  <p><%= t('announcement.no_date') %></p>
+<% end %>
+<%= paginate @users %>
+<%= link_to t('views.common.back'), @user %>
