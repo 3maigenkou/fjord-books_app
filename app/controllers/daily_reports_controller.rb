@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DailyReportsController < ApplicationController
   before_action :set_daily_report, only: %i[ show edit update destroy ]
 
