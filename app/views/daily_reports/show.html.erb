@@ -10,5 +10,7 @@
   <%= @daily_report.content %>
 </p>
 
-<%= link_to t('views.common.edit'), edit_daily_report_path(@daily_report) %> |
+<% if current_user == @daily_report.user %>
+  <%= link_to t('views.common.edit'), edit_daily_report_path(@daily_report) %> |
+<% end %>
 <%= link_to t('views.common.back'), daily_reports_path %>
