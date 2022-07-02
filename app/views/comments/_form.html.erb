@@ -1,0 +1,21 @@
+<h2>Comments</h2>
+<% commentable.comments.each do |comment| %>
+  <p>
+    <% if comment.user.name.present? %>
+      <td><%= comment.user.name %>:</td>
+    <% else %>
+      <td><%= comment.user.email %>:</td>
+    <% end %>
+    <%= comment.comment %>
+  </p>
+<% end %>
+
+<h2>Add a comment:</h2>
+<%= form_with model: [ commentable, commentable.comments.build ] do |form| %>
+  <p>
+    <%= form.text_area :comment %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

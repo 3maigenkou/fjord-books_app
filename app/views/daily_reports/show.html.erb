@@ -10,6 +10,8 @@
   <%= @daily_report.content %>
 </p>
 
+<%= render 'comments/form', commentable: @daily_report, comment: @comment %>
+
 <% if current_user == @daily_report.user %>
   <%= link_to t('views.common.edit'), edit_daily_report_path(@daily_report) %> |
 <% end %>
