@@ -9,6 +9,12 @@ class DailyReports::CommentsController < ApplicationController
     redirect_to @daily_report
   end
 
+  def destroy
+    @daily_report = DailyReport.find(params[:daily_report_id])
+    @comment = @daily_report.comments.find(params[:id])
+    @comment.destroy
+    redirect_to @daily_report
+  end
 
   private
     def comment_params

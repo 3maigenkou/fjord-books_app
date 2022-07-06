@@ -7,7 +7,9 @@
       <td><%= comment.user.email %>:</td>
     <% end %>
     <%= comment.comment %>
-  </p>
+    <% if current_user == comment.user %>
+      <%= link_to t('views.common.destroy'), polymorphic_path([commentable, comment]), method: :delete, data: { confirm: t('views.common.delete_confirm') } %>
+    <% end %>
 <% end %>
 
 <h2>Add a comment:</h2>
