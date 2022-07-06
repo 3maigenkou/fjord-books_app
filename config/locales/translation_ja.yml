@@ -20,3 +20,8 @@ ja:
       daily_report:
         title: タイトル
         content: 本文
+
+  comment:
+    comments: コメント一覧
+    add_comment: コメントを追加する
+    not_comment: コメントはありません

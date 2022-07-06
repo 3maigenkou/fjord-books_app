@@ -1,18 +1,24 @@
-<h2>Comments</h2>
-<% commentable.comments.each do |comment| %>
-  <p>
-    <% if comment.user.name.present? %>
-      <td><%= comment.user.name %>:</td>
-    <% else %>
-      <td><%= comment.user.email %>:</td>
-    <% end %>
-    <%= comment.comment %>
-    <% if current_user == comment.user %>
-      <%= link_to t('views.common.destroy'), polymorphic_path([commentable, comment]), method: :delete, data: { confirm: t('views.common.delete_confirm') } %>
-    <% end %>
+<h2><%= t('comment.comments') %></h2>
+<% if commentable.comments.present? %>
+  <% commentable.comments.each do |comment| %>
+    <p>
+      <% if comment.user.name.present? %>
+        <td><%= comment.user.name %>:</td>
+      <% else %>
+        <td><%= comment.user.email %>:</td>
+      <% end %>
+      <%= comment.comment %>
+      <% if current_user == comment.user %>
+        <%= link_to t('views.common.destroy'), polymorphic_path([commentable, comment]), method: :delete, data: { confirm: t('views.common.delete_confirm') } %>
+      <% end %>
+      (<%= comment.created_at.strftime('%Y/%m/%d %H:%M') %>)
+    </p>
+  <% end %>
+<% else %>
+  <%= t('comment.not_comment') %>
 <% end %>
 
-<h2>Add a comment:</h2>
+<h2><%= t('comment.add_comment') %></h2>
 <%= form_with model: [ commentable, commentable.comments.build ] do |form| %>
   <p>
     <%= form.text_area :comment %>
