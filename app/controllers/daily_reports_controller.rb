@@ -27,10 +27,8 @@ class DailyReportsController < ApplicationController
     respond_to do |format|
       if @daily_report.save
         format.html { redirect_to @daily_report, notice: t('controllers.common.notice_create', name: DailyReport.model_name.human) }
-        format.json { render :show, status: :created, location: @daily_report }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @daily_report.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -40,10 +38,8 @@ class DailyReportsController < ApplicationController
     respond_to do |format|
       if @daily_report.update(daily_report_params)
         format.html { redirect_to @daily_report, notice: t('controllers.common.notice_update', name: DailyReport.model_name.human) }
-        format.json { render :show, status: :ok, location: @daily_report }
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @daily_report.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -53,7 +49,6 @@ class DailyReportsController < ApplicationController
     @daily_report.destroy
     respond_to do |format|
       format.html { redirect_to daily_reports_url, notice: t('controllers.common.notice_destroy', name: DailyReport.model_name.human) }
-      format.json { head :no_content }
     end
   end
 
