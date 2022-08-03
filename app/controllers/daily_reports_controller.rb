@@ -2,6 +2,7 @@
 
 class DailyReportsController < ApplicationController
   before_action :set_daily_report, only: %i[show edit update destroy]
+  before_action :ensure_user, only: %i[edit update destroy]
 
   # GET /daily_reports or /daily_reports.json
   def index
@@ -62,5 +63,9 @@ class DailyReportsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def daily_report_params
     params.require(:daily_report).permit(:title, :content)
+  end
+
+  def ensure_user
+    redirect_to @daily_report unless DailyReport.find(params[:id]).user == current_user
   end
 end

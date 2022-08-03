@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class DailyReports::CommentsController < ApplicationController
+  before_action :set_daily_report, only: %i[create destroy]
+
   def create
-    @daily_report = DailyReport.find(params[:daily_report_id])
     @comment = @daily_report.comments.create(comment_params)
     @comment.user = current_user
     @comment.save!
@@ -10,9 +11,8 @@ class DailyReports::CommentsController < ApplicationController
   end
 
   def destroy
-    @daily_report = DailyReport.find(params[:daily_report_id])
     @comment = @daily_report.comments.find(params[:id])
-    @comment.destroy
+    @comment.destroy if @comment.user == current_user
     redirect_to @daily_report
   end
 
@@ -20,5 +20,9 @@ class DailyReports::CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:comment)
+  end
+
+  def set_daily_report
+    @daily_report = DailyReport.find(params[:daily_report_id])
   end
 end

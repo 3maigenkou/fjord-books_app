@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 class Books::CommentsController < ApplicationController
+  before_action :set_book, only: %i[create destroy]
+
   def create
-    @book = Book.find(params[:book_id])
     @comment = @book.comments.create(comment_params)
     @comment.user = current_user
     @comment.save!
@@ -10,9 +11,8 @@ class Books::CommentsController < ApplicationController
   end
 
   def destroy
-    @book = Book.find(params[:book_id])
     @comment = @book.comments.find(params[:id])
-    @comment.destroy
+    @comment.destroy if @comment.user == current_user
     redirect_to @book
   end
 
@@ -20,5 +20,9 @@ class Books::CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:comment)
+  end
+
+  def set_book
+    @book = Book.find(params[:book_id])
   end
 end
