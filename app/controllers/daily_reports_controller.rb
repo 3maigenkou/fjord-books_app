@@ -66,6 +66,6 @@ class DailyReportsController < ApplicationController
   end
 
   def ensure_user
-    redirect_to @daily_report unless DailyReport.find(params[:id]).user == current_user
+    @daily_report = current_user.daily_reports.find(params[:id])
   end
 end

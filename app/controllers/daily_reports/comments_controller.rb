@@ -11,8 +11,8 @@ class DailyReports::CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = @daily_report.comments.find(params[:id])
-    @comment.destroy if @comment.user == current_user
+    @comment = current_user.comments.find(params[:id])
+    @comment.destroy
     redirect_to @daily_report
   end
 

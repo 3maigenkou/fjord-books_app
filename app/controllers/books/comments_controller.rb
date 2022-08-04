@@ -11,8 +11,8 @@ class Books::CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = @book.comments.find(params[:id])
-    @comment.destroy if @comment.user == current_user
+    @comment = current_user.comments.find(params[:id])
+    @comment.destroy
     redirect_to @book
   end
 
