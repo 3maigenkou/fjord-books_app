@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class DailyReportsController < ApplicationController
-  before_action :set_daily_report, only: %i[show edit update destroy]
-  before_action :ensure_user, only: %i[edit update destroy]
+  before_action :set_daily_report, only: %i[show]
+  before_action :set_current_user_daily_report, only: %i[edit update destroy]
 
   # GET /daily_reports or /daily_reports.json
   def index
@@ -65,7 +65,7 @@ class DailyReportsController < ApplicationController
     params.require(:daily_report).permit(:title, :content)
   end
 
-  def ensure_user
+  def set_current_user_daily_report
     @daily_report = current_user.daily_reports.find(params[:id])
   end
 end
