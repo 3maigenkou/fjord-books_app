@@ -1,0 +1,35 @@
+<h1><%= DailyReport.model_name.human %></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th><%= User.model_name.human %></th>
+      <th><%= DailyReport.human_attribute_name(:title) %></th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @daily_reports.each do |daily_report| %>
+      <tr>
+        <% if daily_report.user.name.present? %>
+          <td><%= daily_report.user.name %></td>
+        <% else %>
+          <td><%= daily_report.user.email %></td>
+        <% end %>
+        <td><%= daily_report.title %></td>
+        <td><%= link_to t('views.common.show'), daily_report %></td>
+        <% if current_user == daily_report.user %>
+          <td><%= link_to t('views.common.edit'), edit_daily_report_path(daily_report) %></td>
+          <td><%= link_to t('views.common.destroy'), daily_report, method: :delete, data: { confirm: t('views.common.delete_confirm') } %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @daily_reports %>
+
+<br>
+
+<%= link_to t('views.common.new'), new_daily_report_path %>

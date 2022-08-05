@@ -1,0 +1,5 @@
+<h1><%= t('views.common.title_new', name: DailyReport.model_name.human) %></h1>
+
+<%= render 'form', daily_report: @daily_report %>
+
+<%= link_to t('views.common.back'), daily_reports_path %>
