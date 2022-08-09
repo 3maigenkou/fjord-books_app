@@ -4,7 +4,8 @@ require 'application_system_test_case'
 
 class BooksTest < ApplicationSystemTestCase
   setup do
-    @book = books(:bottyan)
+    @book1 = books(:bottyan)
+    @book2 = books(:maihime)
 
     Capybara.exact = true
 
@@ -23,9 +24,9 @@ class BooksTest < ApplicationSystemTestCase
     visit books_url
     click_on '新規作成'
 
-    fill_in 'タイトル', with: @book.title
-    fill_in 'メモ', with: @book.memo
-    fill_in '著者', with: @book.author
+    fill_in 'タイトル', with: @book1.title
+    fill_in 'メモ', with: @book1.memo
+    fill_in '著者', with: @book1.author
     click_on '登録する'
 
     assert_text '本が作成されました。'
@@ -38,15 +39,15 @@ class BooksTest < ApplicationSystemTestCase
     visit books_url
     click_link '編集', match: :first
 
-    fill_in 'タイトル', with: @book.title
-    fill_in 'メモ', with: @book.memo
-    fill_in '著者', with: @book.author
+    fill_in 'タイトル', with: @book2.title
+    fill_in 'メモ', with: @book2.memo
+    fill_in '著者', with: @book2.author
     click_on '更新する'
 
     assert_text '本が更新されました。'
-    assert_text '坊っちゃん'
-    assert_text '道後温泉が舞台'
-    assert_text '夏目漱石'
+    assert_text '舞姫'
+    assert_text 'ドイツが舞台'
+    assert_text '森鴎外'
   end
 
   test 'destroying a Book' do
@@ -56,6 +57,6 @@ class BooksTest < ApplicationSystemTestCase
     end
 
     assert_text '本が削除されました。'
-    assert_no_text '坊っちゃん'
+    assert_no_text '舞姫'
   end
 end
