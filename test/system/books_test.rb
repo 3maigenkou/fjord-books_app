@@ -24,9 +24,9 @@ class BooksTest < ApplicationSystemTestCase
     visit books_url
     click_on '新規作成'
 
-    fill_in 'タイトル', with: @book1.title
-    fill_in 'メモ', with: @book1.memo
-    fill_in '著者', with: @book1.author
+    fill_in 'タイトル', with: '坊っちゃん'
+    fill_in 'メモ', with: '道後温泉が舞台'
+    fill_in '著者', with: '夏目漱石'
     click_on '登録する'
 
     assert_text '本が作成されました。'
@@ -39,9 +39,9 @@ class BooksTest < ApplicationSystemTestCase
     visit books_url
     click_link '編集', match: :first
 
-    fill_in 'タイトル', with: @book2.title
-    fill_in 'メモ', with: @book2.memo
-    fill_in '著者', with: @book2.author
+    fill_in 'タイトル', with: '舞姫'
+    fill_in 'メモ', with: 'ドイツが舞台'
+    fill_in '著者', with: '森鴎外'
     click_on '更新する'
 
     assert_text '本が更新されました。'

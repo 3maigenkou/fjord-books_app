@@ -24,8 +24,8 @@ class ReportsTest < ApplicationSystemTestCase
     visit reports_url
     click_on '新規作成'
 
-    fill_in 'タイトル', with: @report1.title
-    fill_in '内容', with: @report1.content
+    fill_in 'タイトル', with: '1日目'
+    fill_in '内容', with: '初めての日報です。'
     click_on '登録する'
 
     assert_text '日報が作成されました。'
@@ -37,8 +37,8 @@ class ReportsTest < ApplicationSystemTestCase
     visit reports_url
     click_link '編集', match: :first
 
-    fill_in 'タイトル', with: @report2.title
-    fill_in '内容', with: @report2.content
+    fill_in 'タイトル', with: '2日目'
+    fill_in '内容', with: '2日目の日報です。'
     click_on '更新する'
 
     assert_text '日報が更新されました。'
