@@ -1,9 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  memo: MyText
+bottyan:
+  title: 坊っちゃん
+  author: 夏目漱石
+  memo: 道後温泉が舞台
 
-two:
-  title: MyString
-  memo: MyText
+maihime:
+  title: 舞姫
+  author: 森鴎外
+  memo: ドイツが舞台
